@@ -3,7 +3,7 @@ layout: post
 title: "Simple GeoJSON Viewer"
 date: 2012-12-15 00:18
 comments: true
-categories: GeoJSON iOS Maps
+categories: [GeoJSON, iOS, Apple Maps]
 ---
 In order to visualize GeoJSON polygons for Apple Maps I built a simple GeoJSON Viewer. I built it since
 there wasn't anything similar. It uses Google Maps.
