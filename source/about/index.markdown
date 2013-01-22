@@ -6,5 +6,13 @@ comments: true
 sharing: true
 footer: true
 ---
-I am generalist hacker based in NY. Passionate about iOS development and spending most of
-my time building slick apps.
+{% img right images/jansanchezPort.jpg 180 180 %}
+Father, Husband and Software Engineer based in NYC. 
+
+Passionate about iOS development and spending most of
+the time building slick apps.
+
+Currently can be found at Piictu hacking iOS apps.
+
+Previously, worked at HopStop on the iPhone and iPad apps.
+ 
