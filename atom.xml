@@ -4,7 +4,7 @@
   <title><![CDATA[Jan Sanchez]]></title>
   <link href="http://jansanz.github.com/atom.xml" rel="self"/>
   <link href="http://jansanz.github.com/"/>
-  <updated>2013-01-21T23:54:57-05:00</updated>
+  <updated>2013-01-22T00:29:36-05:00</updated>
   <id>http://jansanz.github.com/</id>
   <author>
     <name><![CDATA[Jan Sanchez]]></name>
@@ -12,5 +12,19 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Simple GeoJSON Viewer]]></title>
+    <link href="http://jansanz.github.com/blog/2013/01/22/simple-geojson-viewer/"/>
+    <updated>2013-01-22T00:18:00-05:00</updated>
+    <id>http://jansanz.github.com/blog/2013/01/22/simple-geojson-viewer</id>
+    <content type="html"><![CDATA[<p>In order to visualize GeoJSON polygons for Apple Maps I built a simple GeoJSON Viewer. I built it since
+there wasn&#8217;t anything similar. It uses Google Maps.</p>
+
+<p>Right now, it covers the GeoJSON features that Apple supports for their Maps. Perhaps, in the future I will include full support for GeoJSON.</p>
+
+<p>Check the <a href="http://jansanchez.com/geojson-viewer">demo</a> or <a href="https://github.com/jansanz/geojson-viewer">fork it</a>.</p>
+]]></content>
+  </entry>
   
 </feed>
