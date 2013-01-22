@@ -6,7 +6,7 @@ comments: true
 sharing: true
 footer: true
 ---
-{% img right images/jansanchezPort.jpg 180 180 %}
+{% img right /images/jansanchezPort.jpg 180 180 %}
 Father, Husband and Software Engineer based in NYC. 
 
 Passionate about iOS development and spending most of
