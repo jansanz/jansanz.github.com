@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Maps | Jan Sanchez]]></title>
-  <link href="http://jansanz.github.com/blog/categories/maps/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Apple Maps | Jan Sanchez]]></title>
+  <link href="http://jansanz.github.com/blog/categories/apple-maps/atom.xml" rel="self"/>
   <link href="http://jansanz.github.com/"/>
-  <updated>2013-01-22T00:48:44-05:00</updated>
+  <updated>2013-01-22T00:51:01-05:00</updated>
   <id>http://jansanz.github.com/</id>
   <author>
     <name><![CDATA[Jan Sanchez]]></name>
