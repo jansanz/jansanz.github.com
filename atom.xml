@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Jan Sanchez]]></title>
+  <link href="http://jansanz.github.com/atom.xml" rel="self"/>
+  <link href="http://jansanz.github.com/"/>
+  <updated>2013-01-21T23:38:06-05:00</updated>
+  <id>http://jansanz.github.com/</id>
+  <author>
+    <name><![CDATA[Jan Sanchez]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+</feed>
