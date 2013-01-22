@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: XML | Jan Sanchez]]></title>
+  <link href="http://jansanz.github.com/blog/categories/xml/atom.xml" rel="self"/>
+  <link href="http://jansanz.github.com/"/>
+  <updated>2013-01-22T00:48:44-05:00</updated>
+  <id>http://jansanz.github.com/</id>
+  <author>
+    <name><![CDATA[Jan Sanchez]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[XML Parsers in iOS]]></title>
+    <link href="http://jansanz.github.com/blog/2013/01/22/xml-parsers-in-ios/"/>
+    <updated>2013-01-22T19:41:00-05:00</updated>
+    <id>http://jansanz.github.com/blog/2013/01/22/xml-parsers-in-ios</id>
+    <content type="html"><![CDATA[<p>This is a WIP post about benchmarks on various XML Parser librares in iOS. It will be based on <a href="https://github.com/jansanz/iOSXMLPerformance">https://github.com/jansanz/iOSXMLPerformance</a>.</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Jan Sanchez]]></title>
-  <link href="http://jansanz.github.com/atom.xml" rel="self"/>
+  <title><![CDATA[Category: iOS | Jan Sanchez]]></title>
+  <link href="http://jansanz.github.com/blog/categories/ios/atom.xml" rel="self"/>
   <link href="http://jansanz.github.com/"/>
   <updated>2013-01-22T00:48:44-05:00</updated>
   <id>http://jansanz.github.com/</id>
@@ -23,23 +23,12 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[3k Reputation on StackOverflow]]></title>
-    <link href="http://jansanz.github.com/blog/2013/01/12/3k-reputation-on-stackoverflow/"/>
-    <updated>2013-01-12T18:04:00-05:00</updated>
-    <id>http://jansanz.github.com/blog/2013/01/12/3k-reputation-on-stackoverflow</id>
-    <content type="html"><![CDATA[<p>Finally I reached <a href="http://stackoverflow.com/users/265375/jan-s">3k Reputation</a> on <a href="http://stackoverflow.com">StackOverlow</a>.</p>
-
-<p>Also, <a href="http://stackoverflow.com/questions/2662531/launching-google-maps-directions-via-an-intent-on-android/2663565#2663565">one of my top answers</a> got over 100 upvotes :)</p>
-]]></content>
-  </entry>
-  
-  <entry>
     <title type="html"><![CDATA[Simple GeoJSON Viewer]]></title>
     <link href="http://jansanz.github.com/blog/2012/12/15/simple-geojson-viewer/"/>
     <updated>2012-12-15T00:18:00-05:00</updated>
     <id>http://jansanz.github.com/blog/2012/12/15/simple-geojson-viewer</id>
     <content type="html"><![CDATA[<p>In order to visualize GeoJSON polygons for Apple Maps I built a simple GeoJSON Viewer. I built it since
-there wasn&#8217;t anything similar. It uses Google Maps.</p>
+there wasn't anything similar. It uses Google Maps.</p>
 
 <p>Right now, it covers the GeoJSON features that Apple supports for their Maps. Perhaps, in the future I will include full support for GeoJSON.</p>
 
