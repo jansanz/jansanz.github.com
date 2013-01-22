@@ -5,11 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Jan Sanchez</title>
+  <title>Using UIImagePickerController - Jan Sanchez</title>
   <meta name="author" content="Jan Sanchez">
 
   
-  <meta name="description" content="When it comes to XML parsing in iOS, developers usually first stumble upon NSXMLParser. NSXMLParser is a SAX Parser included on the iOS SDK. While it &hellip;">
+  <meta name="description" content="Have you ever found the need in your app to let the user take a Picture or choose one from the Camera Roll? Follow and find
+how easy is to add this &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://jansanz.github.com/">
+  <link rel="canonical" href="http://jansanz.github.com/blog/2012/12/20/using-uiimagepickercontroller/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -73,122 +74,12 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2013/01/22/state-of-ios-xml-libraries-in-2013/">State of iOS XML Libraries in 2013</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-01-22T19:41:00-05:00" pubdate data-updated="true">Jan 22<span>nd</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>When it comes to XML parsing in iOS, developers usually first stumble upon NSXMLParser. NSXMLParser is a <a href="http://en.wikipedia.org/wiki/Simple_API_for_XML">SAX</a> Parser included on the iOS SDK. While it works fine, developers usually end up writing tons of lines to parse XML documents.</p>
-
-<p>There are better and faster alternatives to work with. I personally enjoy working with <a href="https://github.com/ZaBlanc/RaptureXML">RaptureXML</a>. There are different factors when deciding which XML libary to choose. Often, the most common is speed.</p>
-
-<p>Currently, there is no much data on speed tests. The usual source for this data is this dated (March 2010) <a href="http://www.raywenderlich.com/553/how-to-chose-the-best-xml-parser-for-your-iphone-project">excellent blog post</a>. On it, the author checks various libraries and performs tests based on <a href="http://developer.apple.com/library/ios/#samplecode/XMLPerformance/Introduction/Intro.html#//apple_ref/doc/uid/DTS40008094-Intro-DontLinkElementID_2">Apple&#8217;s source</a>.</p>
-
-<p>Since then, several of these libraries have been updated and some new libraries have become available as well. Not to say, that we have now multi-core devices such as the iPhone 5. Therefore, I updated the source code to include the latest versions of the XML libraries and included a few more.</p>
-
-<h4>Libraries tested</h4>
-
-<ul>
-<li>NSXMLParser</li>
-<li>libxml2</li>
-<li><a href="https://github.com/71squared/TBXML">TBXML</a></li>
-<li><a href="https://github.com/TouchCode/TouchXML">TouchXML</a></li>
-<li><a href="https://github.com/robbiehanson/KissXML">KissXML</a></li>
-<li><a href="https://code.google.com/p/gdata-objectivec-client/">GDataXML</a></li>
-<li><a href="https://github.com/ZaBlanc/RaptureXML">RaptureXML</a></li>
-<li><a href="http://sourceforge.net/projects/tinyxml/">TinyXML</a></li>
-<li><a href="https://github.com/leethomason/tinyxml2">TinyXML2</a></li>
-</ul>
-
-
-<p>All the tests were performed on an iPhone 5, each of them ran 10 times. Here&#8217;s a chart with the results:</p>
-
-<p><img src="/images/xmlBenchmarksChart.png"></p>
-
-<p>The fastest library was TBXML and most of the libraries finished within 0.01 seconds. It was a surprise that TinyXML2 came last, taking double the time of TinyXML.</p>
-
-<p>From this tests one can conclude, that under modern hardware, the choice of speed does not matter that much as most of the libraries perform very similarly. The choice breaks down to a matter of preference, to which library you enjoy the most working with.</p>
-
-<p>The code for this test can be found on <a href="https://github.com/jansanz/iOSXMLPerformance">my repo</a>. Feel free to fork it and improve any of the tests, specially if they will help making the parsing faster.</p>
-
-<p>I am planning on revamping these benchmarks based on a <a href="https://github.com/bontoJR/iOS-JSON-Performance">similar test but for JSON Parsing</a>. It is currently a <a href="https://github.com/jansanz/iOS-XML-Performance">work in progress</a>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/01/12/3k-reputation-on-stackoverflow/">3k Reputation on StackOverflow</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-01-12T18:04:00-05:00" pubdate data-updated="true">Jan 12<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Finally I reached <a href="http://stackoverflow.com/users/265375/jan-s">3k Reputation</a> on <a href="http://stackoverflow.com">StackOverlow</a>.</p>
-
-<p>Also, <a href="http://stackoverflow.com/questions/2662531/launching-google-maps-directions-via-an-intent-on-android/2663565#2663565">one of my top answers</a> got over 100 upvotes :)</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/12/20/using-uiimagepickercontroller/">Using UIImagePickerController</a></h1>
+      <h1 class="entry-title">Using UIImagePickerController</h1>
     
     
       <p class="meta">
@@ -211,7 +102,7 @@
   </header>
 
 
-  <div class="entry-content"><p>Have you ever found the need in your app to let the user take a Picture or choose one from the Camera Roll? Follow and find
+<div class="entry-content"><p>Have you ever found the need in your app to let the user take a Picture or choose one from the Camera Roll? Follow and find
 how easy is to add this feature to your app.</p>
 
 <p>The iOS SDK provides a native controller that handles the hard bits for you. This controller is <em><a href="http://developer.apple.com/library/ios/#documentation/uikit/reference/UIImagePickerController_Class/UIImagePickerController/UIImagePickerController.html">UIImagePickerController</a></em>.</p>
@@ -317,22 +208,16 @@ It also allows you to set a custom overlay and define your own camera buttons.</
 
 <p>This sample code can be found in my <a href="https://github.com/jansanz/UIImagePickerController-Demo">GitHub repo</a>.</p>
 </div>
-  
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/12/15/simple-geojson-viewer/">Simple GeoJSON Viewer</a></h1>
-    
-    
-      <p class="meta">
-        
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Jan Sanchez</span></span>
+
+      
 
 
 
@@ -344,32 +229,36 @@ It also allows you to set a custom overlay and define your own camera buttons.</
   
 
 
-<time datetime="2012-12-15T00:18:00-05:00" pubdate data-updated="true">Dec 15<span>th</span>, 2012</time>
-        
-      </p>
+<time datetime="2012-12-20T16:50:00-05:00" pubdate data-updated="true">Dec 20<span>th</span>, 2012</time>
+      
+
+
+    </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>In order to visualize GeoJSON polygons for Apple Maps I built a simple GeoJSON Viewer. I built it since
-there wasn&#8217;t anything similar. It uses Google Maps.</p>
-
-<p>Right now, it covers the GeoJSON features that Apple supports for their Maps. Perhaps, in the future I will include full support for GeoJSON.</p>
-
-<p>Check the <a href="http://jansanchez.com/geojson-viewer">demo</a> or <a href="https://github.com/jansanz/geojson-viewer">fork it</a>.</p>
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://jansanz.github.com/blog/2012/12/20/using-uiimagepickercontroller/" data-via="janfsanchez" data-counturl="http://jansanz.github.com/blog/2012/12/20/using-uiimagepickercontroller/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
 </div>
-  
-  
 
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/12/15/simple-geojson-viewer/" title="Previous Post: Simple GeoJSON Viewer">&laquo; Simple GeoJSON Viewer</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2013/01/12/3k-reputation-on-stackoverflow/" title="Next Post: 3k Reputation on StackOverflow">3k Reputation on StackOverflow &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
 
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
 </div>
+
 <aside class="sidebar">
   
     <section>
@@ -398,7 +287,7 @@ there wasn&#8217;t anything similar. It uses Google Maps.</p>
 <section>
   <h1>GitHub Repos</h1>
   <ul id="gh_repos">
-    <li class="loading">Status updating&#8230;</li>
+    <li class="loading">Status updating...</li>
   </ul>
   
   <a href="https://github.com/jansanz">@jansanz</a> on GitHub
@@ -428,7 +317,7 @@ there wasn&#8217;t anything similar. It uses Google Maps.</p>
 <section>
   <h1>Latest Tweets</h1>
   <ul id="tweets">
-    <li class="loading">Status updating&#8230;</li>
+    <li class="loading">Status updating...</li>
   </ul>
   <script type="text/javascript">
     $.domReady(function(){
@@ -456,6 +345,7 @@ there wasn&#8217;t anything similar. It uses Google Maps.</p>
 
   
 </aside>
+
 
     </div>
   </div>
