@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Jan Sanchez]]></title>
-  <link href="http://jansanz.github.com/atom.xml" rel="self"/>
-  <link href="http://jansanz.github.com/"/>
-  <updated>2013-01-22T17:58:29-05:00</updated>
-  <id>http://jansanz.github.com/</id>
+  <link href="http://jansanchez.com/atom.xml" rel="self"/>
+  <link href="http://jansanchez.com/"/>
+  <updated>2013-01-23T17:27:00-05:00</updated>
+  <id>http://jansanchez.com/</id>
   <author>
     <name><![CDATA[Jan Sanchez]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[State of iOS XML Libraries in 2013]]></title>
-    <link href="http://jansanz.github.com/blog/2013/01/22/state-of-ios-xml-libraries-in-2013/"/>
+    <link href="http://jansanchez.com/blog/2013/01/22/state-of-ios-xml-libraries-in-2013/"/>
     <updated>2013-01-22T19:41:00-05:00</updated>
-    <id>http://jansanz.github.com/blog/2013/01/22/state-of-ios-xml-libraries-in-2013</id>
+    <id>http://jansanchez.com/blog/2013/01/22/state-of-ios-xml-libraries-in-2013</id>
     <content type="html"><![CDATA[<p>When it comes to XML parsing in iOS, developers usually first stumble upon NSXMLParser. NSXMLParser is a <a href="http://en.wikipedia.org/wiki/Simple_API_for_XML">SAX</a> Parser included on the iOS SDK. While it works fine, developers usually end up writing tons of lines to parse XML documents.</p>
 
 <p>There are better and faster alternatives to work with. I personally enjoy working with <a href="https://github.com/ZaBlanc/RaptureXML">RaptureXML</a>. There are different factors when deciding which XML libary to choose. Often, the most common is speed.</p>
@@ -43,7 +43,7 @@
 
 <p>All the tests were performed on an iPhone 5, each of them ran 10 times. Here&#8217;s a chart with the results:</p>
 
-<p><img src="http://jansanz.github.com/images/xmlBenchmarksChart.png"></p>
+<p><img src="http://jansanchez.com/images/xmlBenchmarksChart.png"></p>
 
 <p>The fastest library was TBXML and most of the libraries finished within 0.01 seconds. It was a surprise that TinyXML2 came last, taking double the time of TinyXML.</p>
 
@@ -57,9 +57,9 @@
   
   <entry>
     <title type="html"><![CDATA[3k Reputation on StackOverflow]]></title>
-    <link href="http://jansanz.github.com/blog/2013/01/12/3k-reputation-on-stackoverflow/"/>
+    <link href="http://jansanchez.com/blog/2013/01/12/3k-reputation-on-stackoverflow/"/>
     <updated>2013-01-12T18:04:00-05:00</updated>
-    <id>http://jansanz.github.com/blog/2013/01/12/3k-reputation-on-stackoverflow</id>
+    <id>http://jansanchez.com/blog/2013/01/12/3k-reputation-on-stackoverflow</id>
     <content type="html"><![CDATA[<p>Finally I reached <a href="http://stackoverflow.com/users/265375/jan-s">3k Reputation</a> on <a href="http://stackoverflow.com">StackOverlow</a>.</p>
 
 <p>Also, <a href="http://stackoverflow.com/questions/2662531/launching-google-maps-directions-via-an-intent-on-android/2663565#2663565">one of my top answers</a> got over 100 upvotes :)</p>
@@ -68,9 +68,9 @@
   
   <entry>
     <title type="html"><![CDATA[Using UIImagePickerController]]></title>
-    <link href="http://jansanz.github.com/blog/2012/12/20/using-uiimagepickercontroller/"/>
+    <link href="http://jansanchez.com/blog/2012/12/20/using-uiimagepickercontroller/"/>
     <updated>2012-12-20T16:50:00-05:00</updated>
-    <id>http://jansanz.github.com/blog/2012/12/20/using-uiimagepickercontroller</id>
+    <id>http://jansanchez.com/blog/2012/12/20/using-uiimagepickercontroller</id>
     <content type="html"><![CDATA[<p>Have you ever found the need in your app to let the user take a Picture or choose one from the Camera Roll? Follow and find
 how easy is to add this feature to your app.</p>
 
@@ -181,9 +181,9 @@ It also allows you to set a custom overlay and define your own camera buttons.</
   
   <entry>
     <title type="html"><![CDATA[Simple GeoJSON Viewer]]></title>
-    <link href="http://jansanz.github.com/blog/2012/12/15/simple-geojson-viewer/"/>
+    <link href="http://jansanchez.com/blog/2012/12/15/simple-geojson-viewer/"/>
     <updated>2012-12-15T00:18:00-05:00</updated>
-    <id>http://jansanz.github.com/blog/2012/12/15/simple-geojson-viewer</id>
+    <id>http://jansanchez.com/blog/2012/12/15/simple-geojson-viewer</id>
     <content type="html"><![CDATA[<p>In order to visualize GeoJSON polygons for Apple Maps I built a simple GeoJSON Viewer. I built it since
 there wasn&#8217;t anything similar. It uses Google Maps.</p>
 

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: iOS | Jan Sanchez]]></title>
-  <link href="http://jansanz.github.com/blog/categories/ios/atom.xml" rel="self"/>
-  <link href="http://jansanz.github.com/"/>
-  <updated>2013-01-22T17:58:29-05:00</updated>
-  <id>http://jansanz.github.com/</id>
+  <link href="http://jansanchez.com/blog/categories/ios/atom.xml" rel="self"/>
+  <link href="http://jansanchez.com/"/>
+  <updated>2013-01-23T17:27:00-05:00</updated>
+  <id>http://jansanchez.com/</id>
   <author>
     <name><![CDATA[Jan Sanchez]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[State of iOS XML Libraries in 2013]]></title>
-    <link href="http://jansanz.github.com/blog/2013/01/22/state-of-ios-xml-libraries-in-2013/"/>
+    <link href="http://jansanchez.com/blog/2013/01/22/state-of-ios-xml-libraries-in-2013/"/>
     <updated>2013-01-22T19:41:00-05:00</updated>
-    <id>http://jansanz.github.com/blog/2013/01/22/state-of-ios-xml-libraries-in-2013</id>
+    <id>http://jansanchez.com/blog/2013/01/22/state-of-ios-xml-libraries-in-2013</id>
     <content type="html"><![CDATA[<p>When it comes to XML parsing in iOS, developers usually first stumble upon NSXMLParser. NSXMLParser is a <a href="http://en.wikipedia.org/wiki/Simple_API_for_XML">SAX</a> Parser included on the iOS SDK. While it works fine, developers usually end up writing tons of lines to parse XML documents.</p>
 
 <p>There are better and faster alternatives to work with. I personally enjoy working with <a href="https://github.com/ZaBlanc/RaptureXML">RaptureXML</a>. There are different factors when deciding which XML libary to choose. Often, the most common is speed.</p>
@@ -57,9 +57,9 @@
   
   <entry>
     <title type="html"><![CDATA[Simple GeoJSON Viewer]]></title>
-    <link href="http://jansanz.github.com/blog/2012/12/15/simple-geojson-viewer/"/>
+    <link href="http://jansanchez.com/blog/2012/12/15/simple-geojson-viewer/"/>
     <updated>2012-12-15T00:18:00-05:00</updated>
-    <id>http://jansanz.github.com/blog/2012/12/15/simple-geojson-viewer</id>
+    <id>http://jansanchez.com/blog/2012/12/15/simple-geojson-viewer</id>
     <content type="html"><![CDATA[<p>In order to visualize GeoJSON polygons for Apple Maps I built a simple GeoJSON Viewer. I built it since
 there wasn't anything similar. It uses Google Maps.</p>
 
