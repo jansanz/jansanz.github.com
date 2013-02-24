@@ -3,7 +3,8 @@ layout: post
 title: "UITextField and attributedPlaceholder"
 date: 2013-02-24 14:04
 comments: true
-categories: 
+categories: [iOS, UITextField, attributedPlaceholder]
+description: Using attributedPlaceholder in UITextField is broken. This blog post shows how to work around the issue
 ---
 I wanted to do a custom format placeholder text in a *UITextField* and found out about the *attributedPlaceholder* property [on the documentation](http://developer.apple.com/library/ios/#documentation/uikit/reference/UITextField_Class/Reference/UITextField.html#//apple_ref/occ/instp/UITextField/attributedPlaceholder).
 

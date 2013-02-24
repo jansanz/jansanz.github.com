@@ -3,7 +3,8 @@ layout: post
 title: "Using UIImagePickerController"
 date: 2012-12-20 16:50
 comments: true
-categories: 
+categories: [iOS, UIImagePickerController]
+description: Quick Tutorial on how to use UIImagePickerController
 ---
 Have you ever found the need in your app to let the user take a Picture or choose one from the Camera Roll? Follow and find
 how easy is to add this feature to your app.

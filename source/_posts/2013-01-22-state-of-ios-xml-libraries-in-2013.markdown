@@ -3,7 +3,8 @@ layout: post
 title: "State of iOS XML Libraries in 2013"
 date: 2013-01-22 19:41
 comments: true
-categories: iOS XML
+categories: [iOS, XML]
+description: XML Parsing libraries on iOS and benchmarks
 ---
 When it comes to XML parsing in iOS, developers usually first stumble upon NSXMLParser. NSXMLParser is a [SAX](http://en.wikipedia.org/wiki/Simple_API_for_XML) Parser included on the iOS SDK. While it works fine, developers usually end up writing tons of lines to parse XML documents.
 
