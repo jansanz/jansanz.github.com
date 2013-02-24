@@ -4,7 +4,7 @@
   <title><![CDATA[Jan Sanchez]]></title>
   <link href="http://jansanchez.com/atom.xml" rel="self"/>
   <link href="http://jansanchez.com/"/>
-  <updated>2013-01-24T10:16:08-05:00</updated>
+  <updated>2013-02-24T14:46:09-05:00</updated>
   <id>http://jansanchez.com/</id>
   <author>
     <name><![CDATA[Jan Sanchez]]></name>
@@ -12,6 +12,59 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[UITextField and attributedPlaceholder]]></title>
+    <link href="http://jansanchez.com/blog/2013/02/24/uitextfield-and-attributedplaceholder/"/>
+    <updated>2013-02-24T14:04:00-05:00</updated>
+    <id>http://jansanchez.com/blog/2013/02/24/uitextfield-and-attributedplaceholder</id>
+    <content type="html"><![CDATA[<p>I wanted to do a custom format placeholder text in a <em>UITextField</em> and found out about the <em>attributedPlaceholder</em> property <a href="http://developer.apple.com/library/ios/#documentation/uikit/reference/UITextField_Class/Reference/UITextField.html#//apple_ref/occ/instp/UITextField/attributedPlaceholder">on the documentation</a>.</p>
+
+<p>Great! That should be easy.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">textAttributes</span> <span class="o">=</span>
+</span><span class='line'>      <span class="err">@</span><span class="p">{</span> <span class="n">NSFontAttributeName</span> <span class="o">:</span> <span class="p">[</span><span class="n">UIFont</span> <span class="nl">italicSystemFontOfSize:</span><span class="mf">15.f</span><span class="p">]</span> <span class="p">};</span>
+</span><span class='line'><span class="n">NSAttributedString</span> <span class="o">*</span><span class="n">attributedPlaceholder</span> <span class="o">=</span>
+</span><span class='line'>      <span class="p">[[</span><span class="n">NSAttributedString</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithString:</span><span class="s">@&quot;Placeholder&quot;</span>
+</span><span class='line'>                                      <span class="nl">attributes:</span><span class="n">textAttributes</span><span class="p">];</span>
+</span><span class='line'><span class="c1">// Assume we already have created UITextField *textField</span>
+</span><span class='line'><span class="p">[</span><span class="n">textField</span> <span class="nl">setAttributedPlaceholder:</span><span class="n">attributedPlaceholder</span><span class="p">];</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>So I ran the build and the placeholder should be italic as I wanted, right? <strong>WRONG!</strong></p>
+
+<p>Apparently, this is a bug. And if you had read until this line, please go and file a bug report to Apple so they can fix this.</p>
+
+<p>Now, there are some workarounds for this problem. The one I ended up using is to subclass <em>UITextField</em> and override <em>drawPlaceholderInRect:</em></p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">drawPlaceholderInRect:</span><span class="p">(</span><span class="n">CGRect</span><span class="p">)</span><span class="nv">rect</span> <span class="p">{</span>
+</span><span class='line'>  <span class="c1">// Set to any color of your preference</span>
+</span><span class='line'>  <span class="p">[[</span><span class="n">UIColor</span> <span class="n">lightGrayColor</span><span class="p">]</span> <span class="n">setFill</span><span class="p">];</span>
+</span><span class='line'>  <span class="c1">// We use self.font.pointSize in order to match the input text&#39;s font size</span>
+</span><span class='line'>  <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">placeholder</span> <span class="nl">drawInRect:</span><span class="n">rect</span>
+</span><span class='line'>                      <span class="nl">withFont:</span><span class="p">[</span><span class="n">UIFont</span> <span class="nl">italicSystemFontOfSize:</span><span class="n">self</span><span class="p">.</span><span class="n">font</span><span class="p">.</span><span class="n">pointSize</span><span class="p">]];</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>It is possible to make this subclass more general and use <em>NSAttributedString&#8217;s</em> <em>drawInRect:</em> if attributedPlaceholder is set. But for my requirements the above snippet was enough.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[State of iOS XML Libraries in 2013]]></title>
