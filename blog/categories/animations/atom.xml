@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: animations | Jan Sanchez]]></title>
+  <link href="http://jansanchez.com/blog/categories/animations/atom.xml" rel="self"/>
+  <link href="http://jansanchez.com/"/>
+  <updated>2013-03-10T18:16:21-04:00</updated>
+  <id>http://jansanchez.com/</id>
+  <author>
+    <name><![CDATA[Jan Sanchez]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Fading in UIImageView]]></title>
+    <link href="http://jansanchez.com/blog/2013/03/09/fading-in-uiimageview/"/>
+    <updated>2013-03-09T17:43:00-05:00</updated>
+    <id>http://jansanchez.com/blog/2013/03/09/fading-in-uiimageview</id>
+    <content type="html"><![CDATA[<p>It is always better to fade in image as they load, as this leads to great user experience. It is much better than just have the images abruptly appear. In order to achieve this we can make use of <a href="https://developer.apple.com/library/ios/#documentation/graphicsimaging/reference/CATransition_class/Introduction/Introduction.html">CATransition</a> which is a subclass
+of <a href="https://developer.apple.com/library/ios/#documentation/graphicsimaging/reference/CAAnimation_class/Introduction/Introduction.html#//apple_ref/occ/cl/CAAnimation">CAAnimation</a>.</p>
+
+<p>If you are fetching remote images, a great framework to use is <a href="https://github.com/rs/SDWebImage">SDWebImage</a>. The following
+sample code assumes you are using this framework.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="c1">// We need this import as we&#39;ll be adding the animation to the UIView&#39;s layer&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">import</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">QuartzCore</span><span class="o">/</span><span class="n">QuartzCore</span><span class="p">.</span><span class="n">h</span><span class="o">&gt;&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="c1">// Let&#39;s say we have UIImageView &lt;em&gt;imageView</span>
+</span><span class='line'><span class="p">[</span><span class="n">imageView</span> <span class="nl">setImageWithURL:</span><span class="p">[</span><span class="n">NSURL</span> <span class="nl">URLWithString:</span><span class="s">@&quot;http://example.com/example.png&quot;</span><span class="p">]</span> <span class="nl">completed:</span><span class="o">&lt;</span><span class="n">sup</span><span class="o">&gt;</span><span class="p">(</span><span class="n">UIImage</span><span class="o">&lt;/</span><span class="n">sup</span><span class="o">&gt;</span> <span class="o">&lt;/</span><span class="n">em</span><span class="o">&gt;</span><span class="n">image</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">,</span> <span class="n">SDImageCacheType</span> <span class="n">cacheType</span><span class="p">)</span> <span class="p">{</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="k">if</span> <span class="p">(</span><span class="n">image</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="n">CATransition</span> <span class="o">*</span><span class="n">transition</span> <span class="o">=</span> <span class="p">[</span><span class="n">CATransition</span> <span class="n">animation</span><span class="p">];</span>
+</span><span class='line'>    <span class="n">transition</span><span class="p">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">kCATransitionFade</span><span class="p">;</span> <span class="c1">// there are other types but this is the nicest</span>
+</span><span class='line'>    <span class="n">transition</span><span class="p">.</span><span class="n">duration</span> <span class="o">=</span> <span class="mf">0.34</span><span class="p">;</span> <span class="c1">// set the duration that you like</span>
+</span><span class='line'>    <span class="n">transition</span><span class="p">.</span><span class="n">timingFunction</span> <span class="o">=</span> <span class="p">[</span><span class="n">CAMediaTimingFunction</span> <span class="nl">functionWithName:</span><span class="n">kCAMediaTimingFunctionEaseInEaseOut</span><span class="p">];</span>
+</span><span class='line'>    <span class="p">[</span><span class="n">imageView</span><span class="p">.</span><span class="n">layer</span> <span class="nl">addAnimation:</span><span class="n">transition</span> <span class="nl">forKey:</span><span class="nb">nil</span><span class="p">];</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="p">}];</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+You can also customize the direction of the transition using the <em>subtype</em> property of the CATransition.</p>
+
+<p>This is a quite nice feature if you have a UITableView displaying lots of images.</p>
+]]></content>
+  </entry>
+  
+</feed>

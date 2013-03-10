@@ -81,6 +81,172 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2013/03/10/rapturexml-and-afnetworking/">RaptureXML and AFNetworking</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-10T17:26:00-04:00" pubdate data-updated="true">Mar 10<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>If you are like me, who loves to use <a href="https://github.com/ZaBlanc/RaptureXML">RaptureXML</a> for parsing XML documents, and to use <a href="http://afnetworking.com/">AFNetworking</a>
+when playing with REST APIs, then this post is for you.</p>
+
+<p>I <a href="https://github.com/jansanz/AFRaptureXMLRequestOperation">created an AFNetworking extension</a> to make it easy to use RaptureXML.</p>
+
+<p>Here is a sample on how to use it:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">AFRaptureXMLRequestOperation</span> <span class="o">*</span><span class="n">operation</span> <span class="o">=</span> <span class="p">[</span><span class="n">AFRaptureXMLRequestOperation</span> <span class="nl">XMLParserRequestOperationWithRequest:</span><span class="p">[</span><span class="n">NSURLRequest</span> <span class="nl">requestWithURL:</span><span class="p">[</span><span class="n">NSURL</span> <span class="nl">URLWithString:</span><span class="s">@&quot;http://legalindexes.indoff.com/sitemap.xml&quot;</span><span class="p">]]</span> <span class="nl">success:</span><span class="o">^</span><span class="p">(</span><span class="n">NSURLRequest</span> <span class="o">*</span><span class="n">request</span><span class="p">,</span> <span class="n">NSHTTPURLResponse</span> <span class="o">*</span><span class="n">response</span><span class="p">,</span> <span class="n">RXMLElement</span> <span class="o">*</span><span class="n">XMLElement</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>   <span class="c1">// Do something with XMLElement </span>
+</span><span class='line'><span class="p">}</span> <span class="nl">failure:</span><span class="o">^</span><span class="p">(</span><span class="n">NSURLRequest</span> <span class="o">*</span><span class="n">request</span><span class="p">,</span> <span class="n">NSHTTPURLResponse</span> <span class="o">*</span><span class="n">response</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">,</span> <span class="n">RXMLElement</span> <span class="o">*</span><span class="n">XMLElement</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="c1">// Handle the error</span>
+</span><span class='line'><span class="p">}];</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">[</span><span class="n">operation</span> <span class="n">start</span><span class="p">];</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If subclassing AFHTTPClient then we just need to use registerHTTPOperationClass to register it with AFRaptureXMLRequestOperation</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">-</span> <span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nf">initWithBaseURL:</span><span class="p">(</span><span class="n">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="nv">url</span> <span class="p">{</span>
+</span><span class='line'>    <span class="n">self</span> <span class="o">=</span> <span class="p">[</span><span class="n">super</span> <span class="nl">initWithBaseURL:</span><span class="n">url</span><span class="p">];</span>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">self</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="nb">nil</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="p">[</span><span class="n">self</span> <span class="nl">registerHTTPOperationClass:</span><span class="p">[</span><span class="n">AFRaptureXMLRequestOperation</span> <span class="n">class</span><span class="p">]];</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// Accept HTTP Header; see http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.1</span>
+</span><span class='line'>    <span class="p">[</span><span class="n">self</span> <span class="nl">setDefaultHeader:</span><span class="s">@&quot;Accept&quot;</span> <span class="nl">value:</span><span class="s">@&quot;text/xml;level=1,application/xml;level=2&quot;</span><span class="p">];</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">return</span> <span class="n">self</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I created this extension several months ago, but recently updated it to use ARC and included some
+minor tweaks based on some official extensions.
+Feel free to play around with it, fork it and send any pull requests.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/03/09/fading-in-uiimageview/">Fading in UIImageView</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-09T17:43:00-05:00" pubdate data-updated="true">Mar 9<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>It is always better to fade in image as they load, as this leads to great user experience. It is much better than just have the images abruptly appear. In order to achieve this we can make use of <a href="https://developer.apple.com/library/ios/#documentation/graphicsimaging/reference/CATransition_class/Introduction/Introduction.html">CATransition</a> which is a subclass
+of <a href="https://developer.apple.com/library/ios/#documentation/graphicsimaging/reference/CAAnimation_class/Introduction/Introduction.html#//apple_ref/occ/cl/CAAnimation">CAAnimation</a>.</p>
+
+<p>If you are fetching remote images, a great framework to use is <a href="https://github.com/rs/SDWebImage">SDWebImage</a>. The following
+sample code assumes you are using this framework.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="c1">// We need this import as we&#39;ll be adding the animation to the UIView&#39;s layer</span>
+</span><span class='line'><span class="cp">#import &lt;QuartzCore/QuartzCore.h&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// Let&#39;s say we have UIImageView *imageView </span>
+</span><span class='line'><span class="p">[</span><span class="n">imageView</span> <span class="nl">setImageWithURL:</span><span class="p">[</span><span class="n">NSURL</span> <span class="nl">URLWithString:</span><span class="s">@&quot;http://example.com/example.png&quot;</span><span class="p">]</span> <span class="nl">completed:</span><span class="o">^</span><span class="p">(</span><span class="n">UIImage</span> <span class="o">*</span><span class="n">image</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">,</span> <span class="n">SDImageCacheType</span> <span class="n">cacheType</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="n">image</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="n">CATransition</span> <span class="o">*</span><span class="n">transition</span> <span class="o">=</span> <span class="p">[</span><span class="n">CATransition</span> <span class="n">animation</span><span class="p">];</span>
+</span><span class='line'>        <span class="n">transition</span><span class="p">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">kCATransitionFade</span><span class="p">;</span> <span class="c1">// there are other types but this is the nicest</span>
+</span><span class='line'>        <span class="n">transition</span><span class="p">.</span><span class="n">duration</span> <span class="o">=</span> <span class="mf">0.34</span><span class="p">;</span> <span class="c1">// set the duration that you like</span>
+</span><span class='line'>        <span class="n">transition</span><span class="p">.</span><span class="n">timingFunction</span> <span class="o">=</span> <span class="p">[</span><span class="n">CAMediaTimingFunction</span> <span class="nl">functionWithName:</span><span class="n">kCAMediaTimingFunctionEaseInEaseOut</span><span class="p">];</span>
+</span><span class='line'>        <span class="p">[</span><span class="n">imageView</span><span class="p">.</span><span class="n">layer</span> <span class="nl">addAnimation:</span><span class="n">transition</span> <span class="nl">forKey:</span><span class="nb">nil</span><span class="p">];</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}];</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You can also customize the direction of the transition using the <em>subtype</em> property of the CATransition.</p>
+
+<p>This is a quite nice feature if you have a UITableView displaying lots of images.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2013/02/24/uitextfield-and-attributedplaceholder/">UITextField and attributedPlaceholder</a></h1>
     
     
@@ -457,6 +623,14 @@ there wasn&#8217;t anything similar. It uses Google Maps.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/03/10/rapturexml-and-afnetworking/">RaptureXML and AFNetworking</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/09/fading-in-uiimageview/">Fading in UIImageView</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/02/24/uitextfield-and-attributedplaceholder/">UITextField and attributedPlaceholder</a>
       </li>
     
@@ -466,14 +640,6 @@ there wasn&#8217;t anything similar. It uses Google Maps.</p>
     
       <li class="post">
         <a href="/blog/2013/01/12/3k-reputation-on-stackoverflow/">3k Reputation on StackOverflow</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/12/20/using-uiimagepickercontroller/">Using UIImagePickerController</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/12/15/simple-geojson-viewer/">Simple GeoJSON Viewer</a>
       </li>
     
   </ul>

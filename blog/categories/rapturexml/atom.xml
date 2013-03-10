@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: XML | Jan Sanchez]]></title>
-  <link href="http://jansanchez.com/blog/categories/xml/atom.xml" rel="self"/>
+  <title><![CDATA[Category: RaptureXML | Jan Sanchez]]></title>
+  <link href="http://jansanchez.com/blog/categories/rapturexml/atom.xml" rel="self"/>
   <link href="http://jansanchez.com/"/>
   <updated>2013-03-10T18:16:21-04:00</updated>
   <id>http://jansanchez.com/</id>
@@ -85,48 +85,6 @@ when playing with REST APIs, then this post is for you.</p>
 <p>I created this extension several months ago, but recently updated it to use ARC and included some
 minor tweaks based on some official extensions.
 Feel free to play around with it, fork it and send any pull requests.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[State of iOS XML Libraries in 2013]]></title>
-    <link href="http://jansanchez.com/blog/2013/01/22/state-of-ios-xml-libraries-in-2013/"/>
-    <updated>2013-01-22T19:41:00-05:00</updated>
-    <id>http://jansanchez.com/blog/2013/01/22/state-of-ios-xml-libraries-in-2013</id>
-    <content type="html"><![CDATA[<p>When it comes to XML parsing in iOS, developers usually first stumble upon NSXMLParser. NSXMLParser is a <a href="http://en.wikipedia.org/wiki/Simple_API_for_XML">SAX</a> Parser included on the iOS SDK. While it works fine, developers usually end up writing tons of lines to parse XML documents.</p>
-
-<p>There are better and faster alternatives to work with. I personally enjoy working with <a href="https://github.com/ZaBlanc/RaptureXML">RaptureXML</a>. There are different factors when deciding which XML libary to choose. Often, the most common is speed.</p>
-
-<p>Currently, there is no much data on speed tests. The usual source for this data is this dated (March 2010) <a href="http://www.raywenderlich.com/553/how-to-chose-the-best-xml-parser-for-your-iphone-project">excellent blog post</a>. On it, the author checks various libraries and performs tests based on <a href="http://developer.apple.com/library/ios/#samplecode/XMLPerformance/Introduction/Intro.html#//apple_ref/doc/uid/DTS40008094-Intro-DontLinkElementID_2">Apple's source</a>.</p>
-
-<p>Since then, several of these libraries have been updated and some new libraries have become available as well. Not to say, that we have now multi-core devices such as the iPhone 5. Therefore, I updated the source code to include the latest versions of the XML libraries and included a few more.</p>
-
-<h4>Libraries tested</h4>
-
-<ul>
-<li>NSXMLParser</li>
-<li>libxml2</li>
-<li><a href="https://github.com/71squared/TBXML">TBXML</a></li>
-<li><a href="https://github.com/TouchCode/TouchXML">TouchXML</a></li>
-<li><a href="https://github.com/robbiehanson/KissXML">KissXML</a></li>
-<li><a href="https://code.google.com/p/gdata-objectivec-client/">GDataXML</a></li>
-<li><a href="https://github.com/ZaBlanc/RaptureXML">RaptureXML</a></li>
-<li><a href="http://sourceforge.net/projects/tinyxml/">TinyXML</a></li>
-<li><a href="https://github.com/leethomason/tinyxml2">TinyXML2</a></li>
-</ul>
-
-
-<p>All the tests were performed on an iPhone 5, each of them ran 10 times. Here's a chart with the results:</p>
-
-<p><img src="/images/xmlBenchmarksChart.png"></p>
-
-<p>The fastest library was TBXML and most of the libraries finished within 0.01 seconds. It was a surprise that TinyXML2 came last, taking double the time of TinyXML.</p>
-
-<p>From this tests one can conclude, that under modern hardware, the choice of speed does not matter that much as most of the libraries perform very similarly. The choice breaks down to a matter of preference, to which library you enjoy the most working with.</p>
-
-<p>The code for this test can be found on <a href="https://github.com/jansanz/iOSXMLPerformance">my repo</a>. Feel free to fork it and improve any of the tests, specially if they will help making the parsing faster.</p>
-
-<p>I am planning on revamping these benchmarks based on a <a href="https://github.com/bontoJR/iOS-JSON-Performance">similar test but for JSON Parsing</a>. It is currently a <a href="https://github.com/jansanz/iOS-XML-Performance">work in progress</a>.</p>
 ]]></content>
   </entry>
   

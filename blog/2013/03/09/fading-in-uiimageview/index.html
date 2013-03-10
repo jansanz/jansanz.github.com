@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>UITextField and attributedPlaceholder - Jan Sanchez</title>
+  <title>Fading in UIImageView - Jan Sanchez</title>
   <meta name="author" content="Jan Sanchez">
 
   
-  <meta name="description" content="Using attributedPlaceholder in UITextField is broken. This blog post shows how to work around the issue">
+  <meta name="description" content="Fading in images as they load improve greatly user experience.">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://jansanchez.com/blog/2013/02/24/uitextfield-and-attributedplaceholder/">
+  <link rel="canonical" href="http://jansanchez.com/blog/2013/03/09/fading-in-uiimageview/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -78,7 +78,7 @@
   
   <header>
     
-      <h1 class="entry-title">UITextField and attributedPlaceholder</h1>
+      <h1 class="entry-title">Fading in UIImageView</h1>
     
     
       <p class="meta">
@@ -94,39 +94,18 @@
   
 
 
-<time datetime="2013-02-24T14:04:00-05:00" pubdate data-updated="true">Feb 24<span>th</span>, 2013</time>
+<time datetime="2013-03-09T17:43:00-05:00" pubdate data-updated="true">Mar 9<span>th</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>I wanted to do a custom format placeholder text in a <em>UITextField</em> and found out about the <em>attributedPlaceholder</em> property <a href="http://developer.apple.com/library/ios/#documentation/uikit/reference/UITextField_Class/Reference/UITextField.html#//apple_ref/occ/instp/UITextField/attributedPlaceholder">on the documentation</a>.</p>
+<div class="entry-content"><p>It is always better to fade in image as they load, as this leads to great user experience. It is much better than just have the images abruptly appear. In order to achieve this we can make use of <a href="https://developer.apple.com/library/ios/#documentation/graphicsimaging/reference/CATransition_class/Introduction/Introduction.html">CATransition</a> which is a subclass
+of <a href="https://developer.apple.com/library/ios/#documentation/graphicsimaging/reference/CAAnimation_class/Introduction/Introduction.html#//apple_ref/occ/cl/CAAnimation">CAAnimation</a>.</p>
 
-<p>Great! That should be easy.</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">textAttributes</span> <span class="o">=</span>
-</span><span class='line'>      <span class="err">@</span><span class="p">{</span> <span class="n">NSFontAttributeName</span> <span class="o">:</span> <span class="p">[</span><span class="n">UIFont</span> <span class="nl">italicSystemFontOfSize:</span><span class="mf">15.f</span><span class="p">]</span> <span class="p">};</span>
-</span><span class='line'><span class="n">NSAttributedString</span> <span class="o">*</span><span class="n">attributedPlaceholder</span> <span class="o">=</span>
-</span><span class='line'>      <span class="p">[[</span><span class="n">NSAttributedString</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithString:</span><span class="s">@&quot;Placeholder&quot;</span>
-</span><span class='line'>                                      <span class="nl">attributes:</span><span class="n">textAttributes</span><span class="p">];</span>
-</span><span class='line'><span class="c1">// Assume we already have created UITextField *textField</span>
-</span><span class='line'><span class="p">[</span><span class="n">textField</span> <span class="nl">setAttributedPlaceholder:</span><span class="n">attributedPlaceholder</span><span class="p">];</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>So I ran the build and the placeholder should be italic as I wanted, right? <strong>WRONG!</strong></p>
-
-<p>Apparently, this is a bug. And if you had read until this line, please go and file a bug report to Apple so they can fix this.</p>
-
-<p>Now, there are some workarounds for this problem. The one I ended up using is to subclass <em>UITextField</em> and override <em>drawPlaceholderInRect:</em></p>
+<p>If you are fetching remote images, a great framework to use is <a href="https://github.com/rs/SDWebImage">SDWebImage</a>. The following
+sample code assumes you are using this framework.</p>
 
 <figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -135,17 +114,31 @@
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">drawPlaceholderInRect:</span><span class="p">(</span><span class="n">CGRect</span><span class="p">)</span><span class="nv">rect</span> <span class="p">{</span>
-</span><span class='line'>  <span class="c1">// Set to any color of your preference</span>
-</span><span class='line'>  <span class="p">[[</span><span class="n">UIColor</span> <span class="n">lightGrayColor</span><span class="p">]</span> <span class="n">setFill</span><span class="p">];</span>
-</span><span class='line'>  <span class="c1">// We use self.font.pointSize in order to match the input text&#39;s font size</span>
-</span><span class='line'>  <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">placeholder</span> <span class="nl">drawInRect:</span><span class="n">rect</span>
-</span><span class='line'>                      <span class="nl">withFont:</span><span class="p">[</span><span class="n">UIFont</span> <span class="nl">italicSystemFontOfSize:</span><span class="n">self</span><span class="p">.</span><span class="n">font</span><span class="p">.</span><span class="n">pointSize</span><span class="p">]];</span>
-</span><span class='line'><span class="p">}</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="c1">// We need this import as we&#39;ll be adding the animation to the UIView&#39;s layer</span>
+</span><span class='line'><span class="cp">#import &lt;QuartzCore/QuartzCore.h&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// Let&#39;s say we have UIImageView *imageView </span>
+</span><span class='line'><span class="p">[</span><span class="n">imageView</span> <span class="nl">setImageWithURL:</span><span class="p">[</span><span class="n">NSURL</span> <span class="nl">URLWithString:</span><span class="s">@&quot;http://example.com/example.png&quot;</span><span class="p">]</span> <span class="nl">completed:</span><span class="o">^</span><span class="p">(</span><span class="n">UIImage</span> <span class="o">*</span><span class="n">image</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">,</span> <span class="n">SDImageCacheType</span> <span class="n">cacheType</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="n">image</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="n">CATransition</span> <span class="o">*</span><span class="n">transition</span> <span class="o">=</span> <span class="p">[</span><span class="n">CATransition</span> <span class="n">animation</span><span class="p">];</span>
+</span><span class='line'>        <span class="n">transition</span><span class="p">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">kCATransitionFade</span><span class="p">;</span> <span class="c1">// there are other types but this is the nicest</span>
+</span><span class='line'>        <span class="n">transition</span><span class="p">.</span><span class="n">duration</span> <span class="o">=</span> <span class="mf">0.34</span><span class="p">;</span> <span class="c1">// set the duration that you like</span>
+</span><span class='line'>        <span class="n">transition</span><span class="p">.</span><span class="n">timingFunction</span> <span class="o">=</span> <span class="p">[</span><span class="n">CAMediaTimingFunction</span> <span class="nl">functionWithName:</span><span class="n">kCAMediaTimingFunctionEaseInEaseOut</span><span class="p">];</span>
+</span><span class='line'>        <span class="p">[</span><span class="n">imageView</span><span class="p">.</span><span class="n">layer</span> <span class="nl">addAnimation:</span><span class="n">transition</span> <span class="nl">forKey:</span><span class="nb">nil</span><span class="p">];</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}];</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>It is possible to make this subclass more general and use <em>NSAttributedString&#8217;s</em> <em>drawInRect:</em> if attributedPlaceholder is set. But for my requirements the above snippet was enough.</p>
+<p>You can also customize the direction of the transition using the <em>subtype</em> property of the CATransition.</p>
+
+<p>This is a quite nice feature if you have a UITableView displaying lots of images.</p>
 </div>
 
 
@@ -168,12 +161,12 @@
   
 
 
-<time datetime="2013-02-24T14:04:00-05:00" pubdate data-updated="true">Feb 24<span>th</span>, 2013</time>
+<time datetime="2013-03-09T17:43:00-05:00" pubdate data-updated="true">Mar 9<span>th</span>, 2013</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/uitextfield/'>UITextField</a>, <a class='category' href='/blog/categories/attributedplaceholder/'>attributedPlaceholder</a>, <a class='category' href='/blog/categories/ios/'>iOS</a>
+    <a class='category' href='/blog/categories/caanimation/'>CAAnimation</a>, <a class='category' href='/blog/categories/calayer/'>CALayer</a>, <a class='category' href='/blog/categories/catransition/'>CATransition</a>, <a class='category' href='/blog/categories/fade-in/'>Fade in</a>, <a class='category' href='/blog/categories/quartz/'>Quartz</a>, <a class='category' href='/blog/categories/uiimageview/'>UIImageView</a>, <a class='category' href='/blog/categories/animations/'>animations</a>, <a class='category' href='/blog/categories/ios/'>iOS</a>
   
 </span>
 
@@ -182,7 +175,7 @@
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://jansanchez.com/blog/2013/02/24/uitextfield-and-attributedplaceholder/" data-via="janfsanchez" data-counturl="http://jansanchez.com/blog/2013/02/24/uitextfield-and-attributedplaceholder/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://jansanchez.com/blog/2013/03/09/fading-in-uiimageview/" data-via="janfsanchez" data-counturl="http://jansanchez.com/blog/2013/03/09/fading-in-uiimageview/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -193,10 +186,10 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2013/01/22/state-of-ios-xml-libraries-in-2013/" title="Previous Post: State of iOS XML Libraries in 2013">&laquo; State of iOS XML Libraries in 2013</a>
+        <a class="basic-alignment left" href="/blog/2013/02/24/uitextfield-and-attributedplaceholder/" title="Previous Post: UITextField and attributedPlaceholder">&laquo; UITextField and attributedPlaceholder</a>
       
       
-        <a class="basic-alignment right" href="/blog/2013/03/09/fading-in-uiimageview/" title="Next Post: Fading in UIImageView">Fading in UIImageView &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2013/03/10/rapturexml-and-afnetworking/" title="Next Post: RaptureXML and AFNetworking">RaptureXML and AFNetworking &raquo;</a>
       
     </p>
   </footer>
