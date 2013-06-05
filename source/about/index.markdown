@@ -13,7 +13,5 @@ Father, Husband and Software Engineer based in NYC.
 Passionate about iOS development and spending most of
 the time building slick apps.
 
-Currently can be found at Piictu hacking iOS apps.
+Currently leading iOS Development at HopStop.
 
-Previously, worked at HopStop on the iPhone and iPad apps.
- 
