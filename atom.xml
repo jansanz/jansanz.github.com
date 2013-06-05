@@ -4,7 +4,7 @@
   <title><![CDATA[Jan Sanchez]]></title>
   <link href="http://jansanchez.com/atom.xml" rel="self"/>
   <link href="http://jansanchez.com/"/>
-  <updated>2013-06-04T23:26:35-04:00</updated>
+  <updated>2013-06-04T23:30:08-04:00</updated>
   <id>http://jansanchez.com/</id>
   <author>
     <name><![CDATA[Jan Sanchez]]></name>
@@ -217,17 +217,6 @@ sample code assumes you are using this framework.</p>
 <p>The code for this test can be found on <a href="https://github.com/jansanz/iOSXMLPerformance">my repo</a>. Feel free to fork it and improve any of the tests, specially if they will help making the parsing faster.</p>
 
 <p>I am planning on revamping these benchmarks based on a <a href="https://github.com/bontoJR/iOS-JSON-Performance">similar test but for JSON Parsing</a>. It is currently a <a href="https://github.com/jansanz/iOS-XML-Performance">work in progress</a>.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[3k Reputation on StackOverflow]]></title>
-    <link href="http://jansanchez.com/blog/2013/01/12/3k-reputation-on-stackoverflow/"/>
-    <updated>2013-01-12T18:04:00-05:00</updated>
-    <id>http://jansanchez.com/blog/2013/01/12/3k-reputation-on-stackoverflow</id>
-    <content type="html"><![CDATA[<p>Finally I reached <a href="http://stackoverflow.com/users/265375/jan-s">3k Reputation</a> on <a href="http://stackoverflow.com">StackOverlow</a>.</p>
-
-<p>Also, <a href="http://stackoverflow.com/questions/2662531/launching-google-maps-directions-via-an-intent-on-android/2663565#2663565">one of my top answers</a> got over 100 upvotes :)</p>
 ]]></content>
   </entry>
   
